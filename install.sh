@@ -16,6 +16,11 @@ elif [[ $ubuntu_version == 22.04 ]]; then
     ros1_distro="none"
     ros2_distro="humble"
     config_file=./yaml/ros_menu_22.04.yaml
+elif [[ $ubuntu_version == 24.04 ]]; then
+    # Ubuntu 24.04: ROS 2 Jazzy
+    ros1_distro="none"
+    ros2_distro="jazzy"
+    config_file=./yaml/ros_menu_24.04.yaml
 else
     echo "Sorry, we don't support Ubuntu $ubuntu_version."
     exit

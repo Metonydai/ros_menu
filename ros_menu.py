@@ -87,14 +87,23 @@ def source_ros2():
     ros_domain_id = source_file['Menu'][choose]['domain_id']
     if ros_domain_id is None:
         ros_domain_id = int(source_file['Config']['default_ros_domain_id'])
-    source_ros = 'source %s/local_setup.$shell' \
-                                    % source_file['Menu'][choose]['ros2_path']
+    
+    ros_path = source_file['Menu'][choose]['ros2_path']
+
+    if not os.path.isfile(
+        os.path.join(ros_path, 'setup.bash')
+    ):
+        print('ROS 2 installation not found: ' + ros_path)
+        sys.exit(1)
+
+    source = 'source %s/setup.$shell' \
+        % source_file['Menu'][choose]['ros2_path']
     source_colcon = \
             'source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.$shell'
     export_domain_id = 'export ROS_DOMAIN_ID=%d' % ros_domain_id
     print('* ROS_DOMAIN_ID = %d' % ros_domain_id)
     print('------------------------------------------------------')
-    return source_colcon + '\n' + source_ros + '\n' + export_domain_id + '\n'
+    return source_colcon + '\n' + source + '\n' + export_domain_id + '\n'
 
 
 def check_bridge():
@@ -111,7 +120,7 @@ def check_bridge():
 def create_ros_sourcefile(filename):
     ros_source_file = open(filename, 'w')
     ros_source_file.write(
-        "shell=`echo $SHELL | awk -F '/' '{print $NF}' |  sed 's/\/bin\///g' `\n")
+        "shell=`echo $SHELL | awk -F '/' '{print $NF}' |  sed 's/\\/bin\\///g' `\n")
     ros_source_file.write("PS1=\"(%s) $PS1\"\n" % choose)
     if (source_file['Menu'][choose]['ROS_version'] == 1):
         ros_source_file.write(source_ros1()+read_cmds())

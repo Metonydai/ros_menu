@@ -21,6 +21,8 @@ Neuron Startup Menu offers these features:
   - ROS 1 noetic / ROS 2 foxy
 * Ubuntu 22.04
   - ROS 2 humble
+* Ubuntu 24.04
+  - ROS 2 jazzy
   
 # Install
 
@@ -36,7 +38,7 @@ sudo apt install -y git curl
   - native host:
 
     ```bash
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Adlink-ROS/ros_menu/master/scripts/setup.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Metonydai/ros_menu/main/scripts/setup.sh)"
     ```
   
   - container
@@ -55,9 +57,9 @@ sudo apt install -y git curl
 
 ```bash
 # Select which version you want.
-sh -c "MENU_VERSION=<Your Version> $(curl -fsSL https://raw.githubusercontent.com/Adlink-ROS/ros_menu/main/scripts/setup.sh)"
+sh -c "MENU_VERSION=<Your Version> $(curl -fsSL https://raw.githubusercontent.com/Metonydai/ros_menu/main/scripts/setup.sh)"
 # Select which config you want.
-sh -c "MENU_CONFIG=<Config Name> $(curl -fsSL https://raw.githubusercontent.com/Adlink-ROS/ros_menu/main/scripts/setup.sh)"
+sh -c "MENU_CONFIG=<Config Name> $(curl -fsSL https://raw.githubusercontent.com/Metonydai/ros_menu/main/scripts/setup.sh)"
 ```
 
 # Usage
@@ -71,7 +73,7 @@ sh -c "MENU_CONFIG=<Config Name> $(curl -fsSL https://raw.githubusercontent.com/
 ******************************************************
 0) Do nothing
 1) ROS 1 noetic 
-2) ROS 2 foxy 
+2) ROS 2 jazzy 
 3) ROS2/ROS1_bridge 
 h) Help
 Please choose an option:
